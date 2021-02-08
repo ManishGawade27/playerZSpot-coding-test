@@ -7,22 +7,21 @@ const taskSchema = mongoose.Schema(
       required: true,
     },
     assignTo: {
-      type: { type: mongoose.Schema.Types.ObjectId, ref: "Client" }, //reference
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Client" }], //reference
     },
     priority: {
       type: String,
-      required: true,
+      enum: ["High", "Low"],
+      default: "Low",
     },
     status: {
       type: String,
-      required: true,
-    },
-    isCompleted: {
-      type: Boolean,
-      required: true,
+      enum: ["Ongoing", "YetToStart"],
+      default: "YetToStart",
     },
     toDoList: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: "TaskList" }], //reference,
+      required: true,
     },
   },
   {

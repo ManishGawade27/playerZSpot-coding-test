@@ -6,7 +6,7 @@ export const createclient = async (clientInput) => {
 };
 
 export const updateclient = async (id, clientInput) => {
-  const clientData = await clientModel.findByIdandUpdate(id, clientInput, {
+  const clientData = await clientModel.findByIdAndUpdate(id, clientInput, {
     new: true,
   });
   return clientData;

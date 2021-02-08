@@ -7,6 +7,7 @@ import {
   deleteTask,
   getTasks,
   getTaskById,
+  addTODoList,
 } from "../controllers/task.mjs";
 
 router.get("/tasks", async (req, res) => {
@@ -42,6 +43,16 @@ router.post("/tasks", async (req, res) => {
 router.put("/tasks/:id", async (req, res) => {
   try {
     const task = await updateTask(req.params.id, req.body);
+    console.log(task);
+    return res.send(`${task}`);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.put("/tasks/:taskId/:taskListId", async (req, res) => {
+  try {
+    const task = await addTODoList(req.params.taskId, req.params.taskListId);
     console.log(task);
     return res.send(`${task}`);
   } catch (err) {

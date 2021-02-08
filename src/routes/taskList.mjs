@@ -7,6 +7,7 @@ import {
   deleteTaskList,
   getTaskLists,
   gettaskListById,
+  taskCompletedBy,
 } from "../controllers/taskList.mjs";
 
 router.get("/taskLists", async (req, res) => {
@@ -42,6 +43,19 @@ router.post("/taskLists", async (req, res) => {
 router.put("/taskLists/:id", async (req, res) => {
   try {
     const taskList = await updateTaskList(req.params.id, req.body);
+    console.log(taskList);
+    return res.send(`${taskList}`);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.put("/taskLists/:taskListId/:clientId", async (req, res) => {
+  try {
+    const taskList = await taskCompletedBy(
+      req.params.taskListId,
+      req.params.clientId
+    );
     console.log(taskList);
     return res.send(`${taskList}`);
   } catch (err) {
