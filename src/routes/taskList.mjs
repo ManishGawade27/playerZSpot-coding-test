@@ -33,7 +33,7 @@ router.post("/taskLists", async (req, res) => {
   try {
     const taskList = await createTaskList(req.body);
     console.log(taskList);
-    return res.send(`${taskLists}`);
+    return res.send(`${taskList}`);
   } catch (err) {
     console.log(err);
   }

@@ -1,7 +1,7 @@
 import { taskModel } from "../models/task.mjs";
 
 export const createTask = async (taskInput) => {
-  const newTask = await TaskModel.create(taskInput);
+  const newTask = await taskModel.create(taskInput);
   return newTask;
 };
 
